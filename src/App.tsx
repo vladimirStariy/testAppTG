@@ -1,25 +1,25 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import TelegramLoginButton from './TelegramButton';
 
 function App() {
+  const name = 'cool_notificator_bot'
+  
+  const handleBot = (user: any) => {
+    console.log(user);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <TelegramLoginButton
+        botName={name}
+        buttonSize="large" // "large" | "medium" | "small"
+        cornerRadius={3} // 0 - 20
+        usePic={false} // true | false
+        dataOnauth={handleBot}
+      />
+    </main>
   );
 }
 
