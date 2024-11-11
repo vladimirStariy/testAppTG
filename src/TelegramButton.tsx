@@ -1,14 +1,5 @@
 import React, { useRef, useEffect } from "react";
 
-export interface TelegramUser {
-  id: number;
-  first_name: string;
-  username: string;
-  photo_url: string;
-  auth_date: number;
-  hash: string;
-}
-
 // interface Props {
 //   botName: string;
 //   usePic?: boolean;
@@ -24,7 +15,7 @@ export interface TelegramUser {
 declare global {
   interface Window {
     TelegramLoginWidget: {
-      dataOnauth: (user: TelegramUser) => void;
+      dataOnauth: (user: any) => void;
     };
   }
 }
@@ -56,7 +47,7 @@ const TelegramLoginButton: React.FC<TelegramLoginButtonType> = ({
 
     if (typeof dataOnauth === "function") {
       window.TelegramLoginWidget = {
-        dataOnauth: (user: TelegramUser) => dataOnauth(user),
+        dataOnauth: (user: any) => dataOnauth(user),
       };
     }
 
